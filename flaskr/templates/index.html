@@ -6,11 +6,36 @@
 </head>
 <body>
     <script>
+        async function printResponse() {
+            event.preventDefault();
+            
+            const form = document.getElementById("search")
+            const formData = new FormData(form)
+
+            let response = await fetch(form.action, {
+                method: 'POST',
+                body: formData
+            });
+
+            let json;
+            if (response.ok) {
+                json = await response.json();
+            } else {
+                alert("HTTP-Error: " + response.status)
+                return
+            }
+            json.findItemsAdvancedResponse[0].searchResult[0].item.forEach((coin) => {
+                let p = document.createElement('p');
+                p.innerText = coin.title
+                document.body.appendChild(p)
+            });
+            form.reset();
+        }
 
     </script>
     <form action="/submit" method="POST" id="search">
         <input type="text" id="keywords" name="keywords" placeholder="Enter Keywords"><br><br>
-        <input type="submit" value="Submit">
+        <button type="submit" onclick="printResponse(event)"></button>
     </form>
     <!-- sfdsfdfas
      Producing func: When submitted, timeout for a couple seconds, then grab data from /submit endpoint, then add data to body
