@@ -23,5 +23,9 @@ def submit():
     data = ebay.query(keywords)
     return data
 
+@app.route('/save', methods=['POST', 'GET'])
+def storage():
+    return  render_template('save.html')
+
 if __name__ == '__main__':
     app.run(debug=True)

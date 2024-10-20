@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+    </style>
 </head>
 <body>
     <script>
@@ -31,15 +34,15 @@
             });
             form.reset();
         }
-
     </script>
     <form action="/submit" method="POST" id="search">
         <input type="text" id="keywords" name="keywords" placeholder="Enter Keywords"><br><br>
-        <button type="submit" onclick="printResponse(event)"></button>
+        <button type="submit" name="Search" onclick="printResponse(event)">Search</button>
     </form>
-    <!-- sfdsfdfas
-     Producing func: When submitted, timeout for a couple seconds, then grab data from /submit endpoint, then add data to body
-    -->
+    <form>
+        <button></button>
+        <button></button>
+    </form>
 
 </body>
 </html>

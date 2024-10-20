@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <script>
+        function toggleButton(clickedButton) {
+            if (clickedButton.classList.contains('selected')) {
+                clickedButton.className = 'button'
+            } else {
+                clickedButton.className = 'selected'
+            }
+        }
+        function collectParameters(event) {
+            const buttons = document.querySelectorAll('.properties button');
+            let parameters = ""
+
+            let i = 0
+            buttons.forEach((button) => {
+                if (button.classList.contains('selected')) {
+                    let parameterName = capitalizeFirstLetter(button.parentElement.className)
+                    parameters += `&aspectFilter(${i}).aspectName=${parameterName}aspectFilter(${i}).aspectValueName=${button.innerHTML}`
+                    i++;
+                }
+            }); 
+            alert(parameters)           
+        }
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+    <div class="properties">
+        <div class="grade">
+            <button class="button" onclick="toggleButton(this)">Ungraded</button>
+            <button class="button" onclick="toggleButton(this)">PR 69</button>
+            <button class="button" onclick="toggleButton(this)">MS 65</button>
+            <button class="button" onclick="toggleButton(this)">MS 64</button>
+            <button class="button" onclick="toggleButton(this)">MS 60</button>
+            <button class="button" onclick="toggleButton(this)">F 12</button>
+            <button class="button" onclick="toggleButton(this)">P 1</button>
+            <button class="button" onclick="toggleButton(this)">Not Specified</button>
+        </div>
+        <div class="circulation">
+            <button class="button" onclick="toggleButton(this)">Circulated</button>
+            <button class="button" onclick="toggleButton(this)">Uncirculated</button>
+            <button class="button" onclick="toggleButton(this)">Unknown</button>
+            <button class="button" onclick="toggleButton(this)">Not Specified</button>
+        </div>
+        <div class="composition">
+            <button class="button" onclick="toggleButton(this)">Copper</button>
+            <button class="button" onclick="toggleButton(this)">Bronze</button>
+            <button class="button" onclick="toggleButton(this)">Zinc</button>
+            <button class="button" onclick="toggleButton(this)">Nickel</button>
+            <button class="button" onclick="toggleButton(this)">Silver</button>
+            <button class="button" onclick="toggleButton(this)">Not Specified</button>
+        </div>
+        <div class="color">
+            <button class="button" onclick="toggleButton(this)">BN</button>
+            <button class="button" onclick="toggleButton(this)">RD</button>
+            <button class="button" onclick="toggleButton(this)">RB</button>
+            <button class="button" onclick="toggleButton(this)">Not Specified</button>
+        </div>
+        <div class="certification">
+            <button class="button" onclick="toggleButton(this)">ICCS</button>
+            <button class="button" onclick="toggleButton(this)">Uncertified</button>
+            <button class="button" onclick="toggleButton(this)">PCGS</button>
+            <button class="button" onclick="toggleButton(this)">Not Specified</button>
+        </div>
+        <form class="submit">
+            <button type="submit" onclick="collectParameters(event)">Search</button>
+        </form>
+    </div>
+</body>
+</html>
+

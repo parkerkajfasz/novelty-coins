@@ -1,0 +1,32 @@
+.properties {
+    display: flex;
+    flex-direction: column;
+}
+.properties > div {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+.button {
+    background-color: #f0f0f0; /* Default button color */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    margin: 0 5px; /* Spacing between buttons */
+}
+.selected {
+    background-color: red; /* Selected button color */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    color: white;
+    border-color: #b30000; /* Darker border color for selected state */
+    margin: 0 5px;
+}
+.button:hover {
+    background-color: #e0e0e0;
+}

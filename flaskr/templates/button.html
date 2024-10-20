@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toggle Buttons Example</title>
+    <style>
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin: 20px;
+        }
+        .button {
+            background-color: #f0f0f0; /* Default button color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin: 0 5px; /* Spacing between buttons */
+        }
+        .selected {
+            background-color: red; /* Selected button color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            color: white;
+            border-color: #b30000; /* Darker border color for selected state */
+            margin: 0 5px;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-group">
+        <button class="button" onclick="toggleButton(this)">Option 1</button>
+        <button class="button" onclick="toggleButton(this)">Option 2</button>
+        <button class="button" onclick="toggleButton(this)">Option 3</button>
+        
+    </div>
+    <script>
+        function toggleButton(clickedButton) {
+            // Check if the clicked button is already selected
+            if (clickedButton.classList.contains('selected')) {
+                // If it is, remove the 'selected' class to deselect it
+                clickedButton.classList.remove('selected');
+            } else {
+                // If it is not, remove the 'selected' class from all buttons
+                const buttons = document.querySelectorAll('.button');
+                buttons.forEach(button => {
+                    button.classList.remove('selected');
+                });
+
+                // Add the 'selected' class to the clicked button
+                clickedButton.classList.add('selected');
+            }
+        }
+    </script>
+</body>
+</html>
