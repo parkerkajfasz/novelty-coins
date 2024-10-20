@@ -64,51 +64,94 @@
         }
     </script>
     <nav>
-        <p>eBay Coin Tracker</p>
+        <p>eBay <span style="color: #e2b714;">CoinTracker</span></p>
     </nav>
     <main>
         <div class="properties">
-            <div class="grade">
-                <button class="button" onclick="toggleButton(this)">Ungraded</button>
-                <button class="button" onclick="toggleButton(this)">PR 69</button>
-                <button class="button" onclick="toggleButton(this)">MS 65</button>
-                <button class="button" onclick="toggleButton(this)">MS 64</button>
-                <button class="button" onclick="toggleButton(this)">MS 60</button>
-                <button class="button" onclick="toggleButton(this)">F 12</button>
-                <button class="button" onclick="toggleButton(this)">P 1</button>
-                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            <div class="title">Certification</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Certification refers to whether the coin has been authenticated and graded by a professional organization. Certified coins often have a higher value as they are guaranteed to be genuine and in the condition stated.
+                </div>
+                <div class="certification">
+                    <button class="button" onclick="toggleButton(this)">ICCS</button>
+                    <button class="button" onclick="toggleButton(this)">Uncertified</button>
+                    <button class="button" onclick="toggleButton(this)">PCGS</button>
+                    <button class="button" onclick="toggleButton(this)">Unspecified</button>
+                </div>
             </div>
-            <div class="circulation">
-                <button class="button" onclick="toggleButton(this)">Circulated</button>
-                <button class="button" onclick="toggleButton(this)">Uncirculated</button>
-                <button class="button" onclick="toggleButton(this)">Unknown</button>
-                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+
+            <div class="title">Circulation</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Circulation indicates whether the coin has been used in everyday transactions (Circulated) or if it remains uncirculated, which generally means it's in better condition and may be more valuable.
+                </div>
+                <div class="circulation">
+                    <button class="button" onclick="toggleButton(this)">Circulated</button>
+                    <button class="button" onclick="toggleButton(this)">Uncirculated</button>
+                    <button class="button" onclick="toggleButton(this)">Unknown</button>
+                    <button class="button" onclick="toggleButton(this)">Unspecified</button>
+                </div>
             </div>
-            <div class="composition">
-                <button class="button" onclick="toggleButton(this)">Copper</button>
-                <button class="button" onclick="toggleButton(this)">Bronze</button>
-                <button class="button" onclick="toggleButton(this)">Zinc</button>
-                <button class="button" onclick="toggleButton(this)">Nickel</button>
-                <button class="button" onclick="toggleButton(this)">Silver</button>
-                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+
+            <div class="title">Composition</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Composition refers to the metal or materials from which the coin is made, such as copper, zinc, silver, etc. The material can affect the coin’s value, collectibility, and durability.
+                </div>
+                <div class="composition">
+                    <button class="button" onclick="toggleButton(this)">Copper</button>
+                    <button class="button" onclick="toggleButton(this)">Bronze</button>
+                    <button class="button" onclick="toggleButton(this)">Zinc</button>
+                    <button class="button" onclick="toggleButton(this)">Nickel</button>
+                    <button class="button" onclick="toggleButton(this)">Silver</button>
+                    <button class="button" onclick="toggleButton(this)">Unspecified</button>
+                </div>
             </div>
-            <div class="color">
-                <button class="button" onclick="toggleButton(this)">BN</button>
-                <button class="button" onclick="toggleButton(this)">RD</button>
-                <button class="button" onclick="toggleButton(this)">RB</button>
-                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            
+            <div class="title">Color</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Color refers to the tone or hue of certain coins, often related to how the coin's surface has aged or reacted with the environment. "BN" stands for Brown, "RD" for Red, and "RB" for Red-Brown.
+                </div>
+                <div class="color">
+                    <button class="button" onclick="toggleButton(this)">BN</button>
+                    <button class="button" onclick="toggleButton(this)">RD</button>
+                    <button class="button" onclick="toggleButton(this)">RB</button>
+                    <button class="button" onclick="toggleButton(this)">Unspecified</button>
+                </div>
             </div>
-            <div class="certification">
-                <button class="button" onclick="toggleButton(this)">ICCS</button>
-                <button class="button" onclick="toggleButton(this)">Uncertified</button>
-                <button class="button" onclick="toggleButton(this)">PCGS</button>
-                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+
+            <div class="title">Grade</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Grade refers to the quality and condition of the coin, often represented by a standardized scale like the Sheldon coin grading scale. Higher numbers mean a better-preserved coin, while terms like "Ungraded" mean the coin hasn't been professionally evaluated.
+                </div>
+                <div class="grade">
+                    <button class="button" onclick="toggleButton(this)">Ungraded</button>
+                    <button class="button" onclick="toggleButton(this)">PR 69</button>
+                    <button class="button" onclick="toggleButton(this)">MS 65</button>
+                    <button class="button" onclick="toggleButton(this)">MS 64</button>
+                    <button class="button" onclick="toggleButton(this)">MS 60</button>
+                    <button class="button" onclick="toggleButton(this)">F 12</button>
+                    <button class="button" onclick="toggleButton(this)">P 1</button>
+                    <button class="button" onclick="toggleButton(this)">Unspecified</button>
+                </div>
             </div>
-        </div>
-        <form action="/submit" method="POST" id="search">
-            <input type="text" id="keywords" name="keywords" placeholder="Enter Keywords"><br><br>
-            <button type="submit" name="Search" onclick="printResponse(event)">Search</button>
-        </form>        
+
+            <div class="title">Search</div>
+            <div class="cont">
+                <div class="cont-text">
+                    Use the search bar to enter keywords related to your coin search. Separate each keyword with a space to refine your results. For example, you can type "Coin 1967 Canada 1 Cent" to find specific coins based on your criteria.
+                </div>
+                <div class="searchBarDiv">
+                    <form action="/submit" method="POST" id="search">
+                        <input class="searchBar" type="text" id="keywords" name="keywords" placeholder="Enter Keywords..."><br><br>
+                        <button class="searchButton" type="submit" name="Search" onclick="printResponse(event)">Search</button>
+                    </form>  
+                </div>
+            </div>
+        </div>      
     </main>
 </body>
 </html>
