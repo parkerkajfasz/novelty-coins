@@ -22,10 +22,7 @@ class Ebay():
             RESPONSE_FORMAT = "&Response-Data-Format=JSON&REST-Payload"
             KEYWORDS = "&keywords=Coin%201967%20Canada%201%20Cent&categoryId=11116"
             # ASPECT_FILTER = "&aspectFilter.aspectName=Color&aspectFilter.aspectValueName=RB&aspectFilter.aspectName=Color&aspectFilter.aspectValueName=RD"
-            ASPECT_FILTER = (
-                "&aspectFilter(0).aspectName=Color&aspectFilter(0).aspectValueName=RB"
-                "&aspectFilter(1).aspectName=Color&aspectFilter(1).aspectValueName=RD"
-            )
+            ASPECT_FILTER = ""
 
             url = URL + OPERATION + SERVICE_VERSION + SECURITY_APPNAME + RESPONSE_FORMAT + KEYWORDS + ASPECT_FILTER
 
@@ -35,7 +32,6 @@ class Ebay():
             if response.status_code == 200:
                 # Process the JSON response
                 data = response.json()
-                print(data)
                 return data
             else:
                 # Handle errors

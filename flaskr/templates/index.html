@@ -4,7 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-
+        nav {
+            display: flex;
+            flex: row;
+            text-align: center;
+            justify-content: center;
+            width: 100%;
+            
+        }
+        nav > p {
+            font-size: larger;
+        }
+        main {
+            margin-left: 350px;
+            margin-right: 150px;
+        }
+        .properties {
+            display: flex;
+            flex-direction: column;
+        }
+        .properties > div {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 20px;
+        }
+        .button {
+            background-color: #f0f0f0; /* Default button color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            margin: 0 5px; /* Spacing between buttons */
+        }
+        .selected {
+            background-color: red; /* Selected button color */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            color: white;
+            border-color: #b30000; /* Darker border color for selected state */
+            margin: 0 5px;
+        }
+        .button:hover {
+            background-color: #e0e0e0;
+        }
     </style>
 </head>
 <body>
@@ -14,6 +60,9 @@
             
             const form = document.getElementById("search")
             const formData = new FormData(form)
+
+            const aspect = collectParameters();
+            formData.append("parameters", aspect)
 
             let response = await fetch(form.action, {
                 method: 'POST',
@@ -34,15 +83,78 @@
             });
             form.reset();
         }
-    </script>
-    <form action="/submit" method="POST" id="search">
-        <input type="text" id="keywords" name="keywords" placeholder="Enter Keywords"><br><br>
-        <button type="submit" name="Search" onclick="printResponse(event)">Search</button>
-    </form>
-    <form>
-        <button></button>
-        <button></button>
-    </form>
+        function toggleButton(clickedButton) {
+            if (clickedButton.classList.contains('selected')) {
+                clickedButton.className = 'button'
+            } else {
+                clickedButton.className = 'selected'
+            }
+        }
+        function collectParameters() {
+            const buttons = document.querySelectorAll('.properties button');
+            let parameters = ""
 
+            let i = 0
+            buttons.forEach((button) => {
+                if (button.classList.contains('selected')) {
+                    let parameterName = capitalizeFirstLetter(button.parentElement.className)
+                    parameters += `&aspectFilter(${i}).aspectName=${parameterName}aspectFilter(${i}).aspectValueName=${button.innerHTML}`
+                    i++;
+                }
+            }); 
+            return parameters           
+        }
+        function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+    </script>
+    <nav>
+        <p>eBay Coin Tracker</p>
+    </nav>
+    <hr>
+    <main>
+        <div class="properties">
+            <div class="grade">
+                <button class="button" onclick="toggleButton(this)">Ungraded</button>
+                <button class="button" onclick="toggleButton(this)">PR 69</button>
+                <button class="button" onclick="toggleButton(this)">MS 65</button>
+                <button class="button" onclick="toggleButton(this)">MS 64</button>
+                <button class="button" onclick="toggleButton(this)">MS 60</button>
+                <button class="button" onclick="toggleButton(this)">F 12</button>
+                <button class="button" onclick="toggleButton(this)">P 1</button>
+                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            </div>
+            <div class="circulation">
+                <button class="button" onclick="toggleButton(this)">Circulated</button>
+                <button class="button" onclick="toggleButton(this)">Uncirculated</button>
+                <button class="button" onclick="toggleButton(this)">Unknown</button>
+                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            </div>
+            <div class="composition">
+                <button class="button" onclick="toggleButton(this)">Copper</button>
+                <button class="button" onclick="toggleButton(this)">Bronze</button>
+                <button class="button" onclick="toggleButton(this)">Zinc</button>
+                <button class="button" onclick="toggleButton(this)">Nickel</button>
+                <button class="button" onclick="toggleButton(this)">Silver</button>
+                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            </div>
+            <div class="color">
+                <button class="button" onclick="toggleButton(this)">BN</button>
+                <button class="button" onclick="toggleButton(this)">RD</button>
+                <button class="button" onclick="toggleButton(this)">RB</button>
+                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            </div>
+            <div class="certification">
+                <button class="button" onclick="toggleButton(this)">ICCS</button>
+                <button class="button" onclick="toggleButton(this)">Uncertified</button>
+                <button class="button" onclick="toggleButton(this)">PCGS</button>
+                <button class="button" onclick="toggleButton(this)">Not Specified</button>
+            </div>
+        </div>
+        <form action="/submit" method="POST" id="search">
+            <input type="text" id="keywords" name="keywords" placeholder="Enter Keywords"><br><br>
+            <button type="submit" name="Search" onclick="printResponse(event)">Search</button>
+        </form>        
+    </main>
 </body>
 </html>

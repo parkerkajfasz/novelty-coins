@@ -20,6 +20,9 @@ def index():
 @app.route('/submit', methods=['POST', 'GET'])
 def submit():
     keywords = request.form['keywords']
+    parameters = request.form['parameters']
+    print(keywords)
+    print(parameters)
     data = ebay.query(keywords)
     return data
 
