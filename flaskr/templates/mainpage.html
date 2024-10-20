@@ -3,55 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        nav {
-            display: flex;
-            flex: row;
-            text-align: center;
-            justify-content: center;
-            width: 100%;
-            
-        }
-        nav > p {
-            font-size: larger;
-        }
-        main {
-            margin-left: 350px;
-            margin-right: 150px;
-        }
-        .properties {
-            display: flex;
-            flex-direction: column;
-        }
-        .properties > div {
-            display: flex;
-            flex-direction: row;
-            margin-bottom: 20px;
-        }
-        .button {
-            background-color: #f0f0f0; /* Default button color */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-            margin: 0 5px; /* Spacing between buttons */
-        }
-        .selected {
-            background-color: red; /* Selected button color */
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s, border-color 0.3s;
-            color: white;
-            border-color: #b30000; /* Darker border color for selected state */
-            margin: 0 5px;
-        }
-        .button:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
+    <link rel="stylesheet" href="/flaskr/static/styles/mainpage.css">
 </head>
 <body>
     <script>
@@ -83,6 +35,7 @@
             });
             form.reset();
         }
+
         function toggleButton(clickedButton) {
             if (clickedButton.classList.contains('selected')) {
                 clickedButton.className = 'button'
@@ -90,6 +43,7 @@
                 clickedButton.className = 'selected'
             }
         }
+
         function collectParameters() {
             const buttons = document.querySelectorAll('.properties button');
             let parameters = ""
@@ -104,6 +58,7 @@
             }); 
             return parameters           
         }
+
         function capitalizeFirstLetter(string) {
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
@@ -111,7 +66,6 @@
     <nav>
         <p>eBay Coin Tracker</p>
     </nav>
-    <hr>
     <main>
         <div class="properties">
             <div class="grade">
